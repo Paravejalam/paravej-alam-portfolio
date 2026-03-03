@@ -15,6 +15,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import SectionDivider from "@/components/SectionDivider";
 import ServicesSection from "@/components/ServicesSection";
 import CursorGlow from "@/components/CursorGlow";
+import BackgroundParticles from "@/components/BackgroundParticles";
 
 const Index = () => {
   const isDesktop = typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches;
@@ -22,6 +23,7 @@ const Index = () => {
   return (
     <div className="relative isolate min-h-screen w-full bg-background text-foreground noise-overlay">
       <ScrollProgress />
+      <BackgroundParticles />
       {isDesktop && <CursorGlow />}
 
       {/* Background effects — desktop only */}

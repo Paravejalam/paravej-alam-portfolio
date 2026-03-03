@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 
 // ✅ NEW IMPORTS (ADDED)
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
 
 const roles = [
   "Power BI",
@@ -54,10 +52,6 @@ const HeroSection = () => {
     mouseY.set(e.clientY - window.innerHeight / 2);
   };
 
-  // ✅ NEW: PARTICLES INIT
-  const particlesInit = async (main: any) => {
-    await loadFull(main);
-  };
 
   return (
     <section
@@ -65,29 +59,6 @@ const HeroSection = () => {
       className="relative min-h-[100svh] overflow-hidden bg-[hsl(222,60%,4%)]"
     >
 
-      {/* 🔥 NEW: PARTICLES BACKGROUND */}
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        className="absolute inset-0 z-0"
-        options={{
-          background: { color: "transparent" },
-          fpsLimit: 60,
-          particles: {
-            number: { value: 60 },
-            color: { value: ["#00ffff", "#8b5cf6"] },
-            links: {
-              enable: true,
-              color: "#00ffff",
-              distance: 120,
-              opacity: 0.3,
-            },
-            move: { enable: true, speed: 1 },
-            opacity: { value: 0.5 },
-            size: { value: { min: 1, max: 3 } },
-          },
-        }}
-      />
 
       {/* 🔥 NEW: Background Image */}
       <div
