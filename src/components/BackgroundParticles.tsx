@@ -25,19 +25,18 @@ const BackgroundParticles = () => {
                         fpsLimit: 60,
                         particles: {
                             number: {
-                                value: 80,
+                                value: 120,
                                 density: {
                                     enable: true,
-                                    area: 800,
                                 },
                             },
-                            color: { value: ["#00ffff", "#8b5cf6"] },
+                            color: { value: ["#00ffff", "#8b5cf6", "#3b82f6"] },
                             links: {
                                 enable: true,
                                 color: "#00ffff",
-                                distance: 150,
+                                distance: 130,
                                 opacity: 0.4,
-                                width: 1.5,
+                                width: 1,
                                 triangles: {
                                     enable: true,
                                     opacity: 0.05,
@@ -54,10 +53,10 @@ const BackgroundParticles = () => {
                                 },
                             },
                             opacity: {
-                                value: 0.6,
+                                value: { min: 0.3, max: 0.6 },
                             },
                             size: {
-                                value: { min: 1, max: 4 },
+                                value: { min: 1, max: 3 },
                             },
                         },
                         interactivity: {
