@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 14% 92%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 258 90% 66%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 87%;
+    --input: 220 13% 87%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5% 26%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 92%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 220 13% 87%;
+    --sidebar-ring: 217 91% 60%;
+    --glow: 217 91% 60%;
+    --glow-secondary: 258 90% 66%;
+    --cyan: 192 91% 36%;
+  }
+
+  .dark {
+    --background: 222 60% 5%;
+    --foreground: 210 40% 96%;
+    --card: 222 50% 8%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 50% 8%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 40% 12%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 222 40% 12%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 258 90% 66%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 96%;
+    --border: 222 30% 15%;
+    --input: 222 30% 15%;
+    --ring: 217 91% 60%;
+    --sidebar-background: 222 60% 5%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 40% 12%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 222 30% 15%;
+    --sidebar-ring: 217 91% 60%;
+    --glow: 217 91% 60%;
+    --glow-secondary: 258 90% 66%;
+    --cyan: 192 91% 36%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  /* ── Glassmorphism ── */
+  .glass {
+    background: hsl(var(--card) / 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+  .glass-strong {
+    background: hsl(var(--card) / 0.12);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid hsl(var(--border) / 0.4);
+  }
+  .glass-card {
+    background: hsl(var(--card) / 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border) / 0.15);
+  }
+
+  /* ── Glows ── */
+  .glow-primary {
+    box-shadow: 0 0 40px -5px hsl(var(--primary) / 0.4), 0 0 80px -10px hsl(var(--primary) / 0.15);
+  }
+  .glow-accent {
+    box-shadow: 0 0 40px -5px hsl(var(--accent) / 0.4), 0 0 80px -10px hsl(var(--accent) / 0.15);
+  }
+  .glow-soft {
+    box-shadow: 0 0 30px -8px hsl(var(--primary) / 0.25);
+  }
+
+  /* ── Gradients ── */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+  .text-gradient-animated {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--cyan)), hsl(var(--primary)));
+    background-size: 300% 300%;
+    animation: gradient-shift 4s ease-in-out infinite;
+  }
+  .bg-gradient-hero {
+    background-image: linear-gradient(135deg, hsl(var(--primary) / 0.08), hsl(var(--accent) / 0.08));
+  }
+  .bg-gradient-accent {
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+  .bg-gradient-subtle {
+    background-image: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(var(--accent) / 0.03));
+  }
+
+  /* ── Sections ── */
+  .section-alt {
+    background: hsl(var(--card) / 0.3);
+  }
+
+  /* ── Gradient border ── */
+  .gradient-border {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.3), hsl(var(--accent) / 0.3));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* ── Noise overlay ── */
+  .noise-overlay {
+    position: relative;
+  }
+  .noise-overlay::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* ── Grid ── */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--primary) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* ── Divider ── */
+  .gradient-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), hsl(var(--accent) / 0.3), transparent);
+  }
+
+  /* ── Scroll progress ── */
+  .scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--cyan)));
+    z-index: 100;
+    transition: width 0.1s linear;
+  }
+
+  /* ── Premium card hover ── */
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 60px -15px hsl(var(--primary) / 0.2), 0 0 30px -10px hsl(var(--accent) / 0.1);
+  }
+
+  /* ── Badge pill ── */
+  .badge-glow {
+    box-shadow: 0 0 12px -2px hsl(var(--primary) / 0.3), inset 0 0 12px -4px hsl(var(--primary) / 0.1);
+  }
+
+  /* ── Button premium hover ── */
+  .btn-premium {
+    @apply transition-all duration-300;
+  }
+  .btn-premium:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px -5px hsl(var(--primary) / 0.5), 0 10px 40px -10px hsl(var(--accent) / 0.3);
+  }
+}
