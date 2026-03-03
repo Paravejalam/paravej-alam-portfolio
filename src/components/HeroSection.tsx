@@ -56,18 +56,17 @@ const HeroSection = () => {
   return (
     <section
       onMouseMove={handleMouseMove} // ✅ ADDED
-      className="relative min-h-[100svh] overflow-hidden bg-[hsl(222,60%,4%)]"
+      className="relative min-h-[100svh] overflow-hidden bg-background"
     >
-
 
       {/* 🔥 NEW: Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-30"
+        className="absolute inset-0 bg-cover bg-center opacity-[0.15] dark:opacity-30"
         style={{ backgroundImage: "url('/hero-bg.png')" }}
       />
 
-      {/* 🔥 NEW: Dark overlay */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+      {/* 🔥 NEW: Dark overlay - only for dark mode */}
+      <div className="absolute inset-0 dark:bg-black/60 bg-white/40 backdrop-blur-[1px] dark:backdrop-blur-[2px]" />
 
       {/* Desktop effects (UNCHANGED) */}
       <div className="hidden md:block absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
